@@ -1,4 +1,4 @@
-FROM docker pull blueapple/baseimage:base
+FROM blueapple/baseimage:base
 MAINTAINER blueapple <blueapple1120@qq.com>
 
 RUN apk add --update perl && \

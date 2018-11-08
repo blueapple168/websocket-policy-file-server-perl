@@ -1,0 +1,7 @@
+version: "2"
+
+services:
+  policy:
+    image: blueapple/websocket-policy-file-server-perl
+    ports:
+      - "843:843"

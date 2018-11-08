@@ -14,10 +14,11 @@ In either case, when the Flash player makes a connection, it sends the following
 
 <policy-file-request/>
 Your server then must send the following XML in reply:
-
+```
 <cross-domain-policy>
      <allow-access-from domain="*" to-ports="*" />
 </cross-domain-policy>
+```
 * is the wildcard and means "all ports/domains". If you want to restrict access to a particular port, enter the port number, or a list or range of numbers.
 
 Since the Flash Player always tries port 843 first, if there's nothing listening on that port, then the Flash clients are going to experience a 3-second delay when trying to connect to your server. Even if you set up a policy file on the destination port, there will still be the delay. For fastest response times, you should set up a server-wide socket policy server on port 843.
@@ -26,7 +27,9 @@ A Simple XML Server For Your Socket Policy File
 I've written a simple Perl socket server that will listen on port 843 and return a global socket policy file. The source code is available below.
 
 socketpolicy.pl [View Source](http://www.lightsphere.com/dev/articles/socketpolicy.pl.html)
+
 socketpolicy.tar.gz [download](http://www.lightsphere.com/dev/articles/socketpolicy.tar.gz)
+
 To start the server (on a unix host), you'll need to su to root and then run the following:
 ```
 ./socketpolicy.pl > /dev/null &
@@ -41,7 +44,7 @@ You don't have to specify the secure="true" or secure="false" option (although y
 
 Adobe recommends against using the secure="true" directive in socket policy files that are not served from local sockets (i.e., from socket servers running on the same computer as Flash Player). Flash Player will generate warnings in the policy file log if it finds secure="true" in a socket policy file that does not appear to have come from the local host. Flash Player will in fact honor secure="true" in non-local socket policy files, but only because it is not possible for Flash Player to detect with 100% reliability whether a socket connection is to the local host or not.
 
-Additional Resources
-Apache module for Policy File
-Adobe: Setting up a socket policy file server
+## Additional Resources
+##### [Apache module for Policy File](http://www.beamartyr.net/articles/adobepolicyfileserver.html)
+##### Adobe: [Setting up a socket policy file server](http://www.adobe.com/devnet/flashplayer/articles/socket_policy_files.edu.html)
 

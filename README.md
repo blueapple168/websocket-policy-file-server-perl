@@ -1,3 +1,5 @@
+# IE9 support WebSockets
+[gimite/web-socket-js](https://github.com/blueapple168/websocket-policy-file-server-perl/blob/master/introduction.md)
 # Setting Up A Flash Socket Policy File
 
 Flash Player 9 (version 9.0.124.0 and above) implemented a strict new access policy for Flash applications (such as chat clients or games) that make Socket or XMLSocket connections to a remote host. It now requires the presence of a socket policy file on the server. (This means you need to have control of the server in order to implement these changes. If you've written a flash app that makes a connection to a server you don't own, you're out of luck, unless that server sets up their own socket policy.)

@@ -6,7 +6,7 @@ RUN apk update && \
 
 RUN mkdir -p /workspace
 WORKDIR /workspace
-RUN curl -LO http://www.lightsphere.com/dev/articles/socketpolicy.tar.gz &&
+RUN curl -LO http://www.lightsphere.com/dev/articles/socketpolicy.tar.gz && \
     tar -xzf socketpolicy.tar.gz && \
     rm -rf socketpolicy.tar.gz && \
     rm -rf /var/cache/apk/* && \

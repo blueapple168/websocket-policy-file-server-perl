@@ -1,10 +1,13 @@
-FROM perl:5.28-slim
-MAINTAINER blueapple <blueapple1120@qq.com>
+FROM blueapple/baseimage:latest AS downloadfile
 
+WORKDIR /root
+RUN curl -LO http://www.lightsphere.com/dev/articles/socketpolicy.tar.gz && \
+    tar -xzf socketpolicy.tar.gz && \
+    rm -rf socketpolicy.tar.gz
+
+FROM perl:5.28-slim
 RUN mkdir -p /workspace
-ADD http://www.lightsphere.com/dev/articles/socketpolicy.tar.gz /workspace
 WORKDIR /workspace
-# Flash Player always tries port 843 first, if there's nothing listening on that port, then the Flash clients are going to experience a 3-second delay when trying to connect to your server. Even if you set up a policy file on the destination port, there will still be the delay. 
-# For fastest response times, you should set up a server-wide socket policy server on port 843.
+COPY --from=downloadfile /root/socketpolicy /workspace/socketpolicy
 EXPOSE 843
 CMD ["/workspace/socketpolicy/socketpolicy.pl",">","/dev/null"]

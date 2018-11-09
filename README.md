@@ -51,5 +51,5 @@ Adobe recommends against using the secure="true" directive in socket policy file
 ##### Adobe: [Setting up a socket policy file server](http://www.adobe.com/devnet/flashplayer/articles/socket_policy_files.edu.html)
 
 ## Other Issue Flash Player doesn't connect to socket policy file server - gives SecurityError #2048 ...
-There was a global configuration file mms.cfg on the machine that set DisableSockets=1. This casued the SecurityError and prevented Flash Player from connecting to the policy file server. Set it to 0 (which is the default) and everything worked. For details on this file, see [flash_player_admin_guide] (http://www.adobe.com/content/dam/Adobe/en/devnet/flash/articles/flash_player_admin_guide/flash_player_admin_guide.pdf) Chapter 4.
+There was a global configuration file mms.cfg on the machine that set DisableSockets=1. This casued the SecurityError and prevented Flash Player from connecting to the policy file server. Set it to 0 (which is the default) and everything worked. For details on this file, see [flash_player_admin_guide](http://www.adobe.com/content/dam/Adobe/en/devnet/flash/articles/flash_player_admin_guide/flash_player_admin_guide.pdf) Chapter 4.
 

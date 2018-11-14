@@ -12,13 +12,11 @@ RUN curl -LO http://www.lightsphere.com/dev/articles/socketpolicy.tar.gz && \
     rm -rf socketpolicy.tar.gz && \
     rm -rf /var/cache/apk/* && \
     rm -rf /var/lib/apt/lists/*
-
-# Output logs to stdout
-#RUN sed -i 'N;88i\ \ \ \ \ \ \ \ print\ \$msg\;' /workspace/socketpolicy/socketpolicy.pl && \
+    
 # Auth
 RUN chown -R root:root /workspace && \
     chmod +x /workspace/socketpolicy/socketpolicy.pl
     
 EXPOSE 843
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["/workspace/socketpolicy/socketpolicy.pl",">","/dev/null"]
+CMD ["/workspace/socketpolicy/socketpolicy.pl",">","/dev/null","&"]

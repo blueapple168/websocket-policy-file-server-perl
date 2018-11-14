@@ -13,6 +13,10 @@ RUN curl -LO http://www.lightsphere.com/dev/articles/socketpolicy.tar.gz && \
     rm -rf /var/lib/apt/lists/*
 
 # Output logs to stdout
-RUN sed -i 'N;88i\ \ \ \ \ \ \ \ print\ \$msg\;' /workspace/socketpolicy/socketpolicy.pl
+#RUN sed -i 'N;88i\ \ \ \ \ \ \ \ print\ \$msg\;' /workspace/socketpolicy/socketpolicy.pl && \
+# Auth
+RUN chown -R root:root /workspace && \
+    chmod +x /workspace/socketpolicy/socketpolicy.pl
+    
 EXPOSE 843
 CMD ["/workspace/socketpolicy/socketpolicy.pl",">","/dev/null"]

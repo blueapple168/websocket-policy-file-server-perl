@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-
+LOGFILE=/workspace/flash_socket_policy.log
 exec /workspace/socketpolicy/socketpolicy.pl > /dev/null &
 
-tail -f /workspace/flash_socket_policy.log
+if [ -f "$LOGFILE" ];then
+  tail -f "$LOGFILE"
+else
+  ls -al /workspace
+fi
+

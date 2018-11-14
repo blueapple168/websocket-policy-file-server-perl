@@ -21,4 +21,4 @@ RUN chown -R root:root /workspace && \
     
 EXPOSE 843
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
-CMD ["docker-entrypoint.sh"]
+CMD ["/workspace/docker-entrypoint.sh"]

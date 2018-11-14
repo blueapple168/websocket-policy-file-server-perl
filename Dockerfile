@@ -2,7 +2,8 @@ FROM blueapple/baseimage:latest
 MAINTAINER blueapple <blueapple1120@qq.com>
 
 RUN apk update && \
-    apk add perl
+    apk add perl \
+    dumb-init
 
 RUN mkdir -p /workspace
 WORKDIR /workspace
@@ -19,4 +20,5 @@ RUN chown -R root:root /workspace && \
     chmod +x /workspace/socketpolicy/socketpolicy.pl
     
 EXPOSE 843
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["/workspace/socketpolicy/socketpolicy.pl",">","/dev/null"]

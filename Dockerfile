@@ -17,7 +17,8 @@ RUN curl -LO http://www.lightsphere.com/dev/articles/socketpolicy.tar.gz && \
 # Auth
 RUN chown -R root:root /workspace && \
     chmod +x /workspace/socketpolicy/socketpolicy.pl && \
-    chmod +x /workspace/docker-entrypoint.sh
+    chmod +x /workspace/docker-entrypoint.sh &&
+    touch /workspace/flash_socket_policy.log
     
 EXPOSE 843
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]

@@ -4,7 +4,5 @@ exec /workspace/socketpolicy/socketpolicy.pl > /dev/null &
 
 if [ -f "$LOGFILE" ];then
   tail -f "$LOGFILE"
-else
-  ls -al /workspace
 fi
 
